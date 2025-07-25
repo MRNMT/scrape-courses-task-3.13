@@ -15,7 +15,7 @@ def scrape_courses():
         course_code = course.get('data-id', 'N/A')
         title = course.find('h3').get_text(strip=True) if course.find('h3') else 'N/A'
         instructor_text = course.find('p').get_text(strip=True) if course.find('p') else 'N/A'
-        # instructor_text is like "Instructor: Dr. Ada Lovelace" so we split on ":"
+    
         instructor = instructor_text.split(":", 1)[1].strip() if ":" in instructor_text else instructor_text
         credits = course.find('span', class_='credits').get_text(strip=True).replace('Credits: ', '') if course.find('span', class_='credits') else 'N/A'
         duration = course.find('span', class_='duration').get_text(strip=True).replace('Duration: ', '') if course.find('span', class_='duration') else 'N/A'
